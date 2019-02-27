@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.homepages.index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 /**
@@ -76,9 +77,20 @@ Route::prefix('admin')->group(function (){
      * ----------------------------------------
      * ----------------------------------------
      */
-    Route::get('shop/category', function (){
-        return view('admin.content.shop.category.index');
-    });
+    Route::get('shop/category','Admin\ShopCategoryController@index');
+    Route::get('shop/category/create','Admin\ShopCategoryController@create');
+    Route::get('shop/category/{id}/edit','Admin\ShopCategoryController@edit');
+    Route::get('shop/category/{id}/delete','Admin\ShopCategoryController@delete');
+
+
+    Route::post('shop/category','Admin\ShopCategoryController@store');
+    Route::post('shop/category/{id}','Admin\ShopCategoryController@update');
+    Route::post('shop/category/{id}/delete','Admin\ShopCategoryController@destroy');
+
+
+
+
+
 
     Route::get('shop/product', function (){
         return view('admin.content.shop.product.index');

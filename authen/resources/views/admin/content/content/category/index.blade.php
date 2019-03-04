@@ -6,7 +6,7 @@
 @section('content')
     <h1>Quản trị danh mục sản phẩm</h1>
     <div style="margin: 20px 0">
-        <a href="{{url('admin/shop/category/create')}}" class="btn btn-success">Thêm danh mục</a>
+        <a href="{{url('admin/content/category/create')}}" class="btn btn-success">Thêm danh mục</a>
     </div>
 
     <div class="tables">
@@ -21,7 +21,7 @@
                     <th>Images</th>
                     <th>Intro</th>
                     <th>Desc</th>
-                    <th>Note</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,8 +34,8 @@
                         <td>{{ $cat->intro }}</td>
                         <td>{{ $cat->desc }}</td>
                         <td>
-                            <a href="{{ url('/admin/shop/category/'.$cat->id.'/edit') }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ url('/admin/shop/category/'.$cat->id.'/delete') }}" class="btn btn-danger">Delete</a>
+                            <a href="{{ url('/admin/content/category/'.$cat->id.'/edit') }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ url('/admin/content/category/'.$cat->id.'/delete') }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach

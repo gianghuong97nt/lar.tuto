@@ -16,7 +16,7 @@
                     </ul>
                 </div>
             @endif
-            <form name="category" action="{{url('admin/shop/category/'.$id)}}" method="post" class="form-horizontal">
+            <form name="category" action="{{url('admin/content/category/'.$id)}}" method="post" class="form-horizontal">
                 @csrf
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-2 control-label">Tên danh mục</label>
@@ -47,7 +47,7 @@
 
 
                 <div class="col-sm-offset-2">
-                    <button type="submit" class="btn btn-default">Sign in</button>
+                    <button type="submit" class="btn btn-default">Update</button>
                 </div>
             </form>
         </div>

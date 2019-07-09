@@ -148,6 +148,21 @@ Route::prefix('admin')->group(function (){
     Route::post('content/category/{id}/delete','Admin\ContentCategoryController@destroy');
 
 
+    /**
+     * Route cho phần nội dung bài viết
+     */
+
+    Route::get('content/post','Admin\ContentPostController@index');
+    Route::get('content/post/create','Admin\ContentPostController@create');
+    Route::get('content/post/{id}/edit','Admin\ContentPostController@edit');
+    Route::get('content/post/{id}/delete','Admin\ContentPostController@delete');
+
+
+    Route::post('content/post','Admin\ContentPostController@store');
+    Route::post('content/post/{id}','Admin\ContentPostController@update');
+    Route::post('content/post/{id}/delete','Admin\ContentPostController@destroy');
+
+
 //    Route::get('content/category', function (){
 //        return view('admin.content.content.category.index');
 //    });

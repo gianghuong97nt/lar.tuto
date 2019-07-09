@@ -20,9 +20,9 @@ class CreateContentPosts extends Migration
             $table->string('images');
             $table->string('desc');
             $table->string('intro');
-            $table->integer('author');
-            $table->integer('cat_id');
+            $table->integer('author_id');
             $table->integer('view');
+            $table->integer('cat_id');
             $table->timestamps();
         });
     }

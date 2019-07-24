@@ -47,7 +47,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
     <script src="{{ asset('admin_assets/js/pie-chart.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
-
         $(document).ready(function () {
             $('#demo-pie-1').pieChart({
                 barColor: '#2dde98',
@@ -58,7 +57,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     $(this.element).find('.pie-value').text(Math.round(percent) + '%');
                 }
             });
-
             $('#demo-pie-2').pieChart({
                 barColor: '#8e43e7',
                 trackColor: '#eee',
@@ -68,7 +66,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     $(this.element).find('.pie-value').text(Math.round(percent) + '%');
                 }
             });
-
             $('#demo-pie-3').pieChart({
                 barColor: '#ffc168',
                 trackColor: '#eee',
@@ -78,10 +75,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     $(this.element).find('.pie-value').text(Math.round(percent) + '%');
                 }
             });
-
-
         });
-
     </script>
     <!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
 

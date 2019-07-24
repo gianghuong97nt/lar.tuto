@@ -11,14 +11,58 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.homepages.index');
-});
+//Route::get('/', function () {
+//    return view('frontend.homepages.index');
+//});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/**
+ * Homepage route
+ */
+Route::get('/', 'Frontend\HomepageController@index');
+
+/**
+ * Frontend route shop category
+ */
+Route::get('shop/category/{id}', 'Frontend\ShopCategoryController@detail');
+
+/**
+ * Frontend route shop product
+ */
+Route::get('shop/product/{id}', 'Frontend\ShopProductController@detail');
+
+/**
+ * Frontend route cart giỏ hàng
+ */
+Route::get('shop/cart', 'Frontend\ShopCartController@index');
+
+/**
+ * Frontend route payment thanh toán
+ */
+Route::get('shop/payment', 'Frontend\ShopPaymentController@index');
+
+/**
+ * Frontend route CMS page
+ */
+Route::get('page/{id}', 'Frontend\ContentPageController@detail');
+
+/**
+ * Frontend route content category
+ */
+Route::get('content/category/{id}', 'Frontend\ContentCategoryController@detail');
+
+/**
+ * Frontend route content tag
+ */
+Route::get('content/tag/{id}', 'Frontend\ContentTagController@detail');
+
+/**
+ * Frontend route shop product
+ */
+Route::get('content/post/{id}', 'Frontend\ContentPostController@detail');
 
 
 /**
@@ -43,141 +87,52 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/dashboard','AdminController@index')->name('admin.dashboard');
 
-    /**
-     * URL authen.com/admin/register
-     */
-    Route::get('register', 'AdminController@create')->name('admin.register');
 
     /**
-     * URL authen.com/admin/register
-     * Route dđăng kí từ form POST
-     */
-    Route::post('register', 'AdminController@store')->name('admin.register.store');
-
-    /**
-     * URL authen.com\admin\login
-     * Route trả về view đăng nhập admin
-     */
-    Route::get('login', 'Auth\Admin\LoginController@login')->name('admin.auth.login');
-
-    /**
-     * URL authen.com\admin\login
-     * Xử lý đăng nhập
-     */
-    Route::post('login', 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
-
-    /**
-     * Route dùng để đăng xuất
-     */
-    Route::post('logout', 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
-
-
-    /**
-     * -----------Route admin shopping------------
+     * -----------Route admin category------------
      * ----------------------------------------
      * ----------------------------------------
      */
-    Route::get('shop/category','Admin\ShopCategoryController@index');
-    Route::get('shop/category/create','Admin\ShopCategoryController@create');
-    Route::get('shop/category/{id}/edit','Admin\ShopCategoryController@edit');
-    Route::get('shop/category/{id}/delete','Admin\ShopCategoryController@delete');
+    Route::get('category','Admin\CategoryController@index');
+    Route::get('category/create','Admin\CategoryController@create');
+    Route::get('category/{id}/edit','Admin\CategoryController@edit');
+    Route::get('category/{id}/delete','Admin\CategoryController@delete');
 
 
-    Route::post('shop/category','Admin\ShopCategoryController@store');
-    Route::post('shop/category/{id}','Admin\ShopCategoryController@update');
-    Route::post('shop/category/{id}/delete','Admin\ShopCategoryController@destroy');
+    Route::post('category','Admin\CategoryController@store');
+    Route::post('category/{id}','Admin\CategoryController@update');
+    Route::post('category/{id}/delete','Admin\CategoryController@destroy');
 
 
 
 
     /**
-     * -----------Route admin shopping product------------
+     * -----------Route admin  product------------
      * ----------------------------------------
      * ----------------------------------------
      */
 
 
-    Route::get('shop/product', 'Admin\ShopProductController@index');
-    Route::get('shop/product/create','Admin\ShopProductController@create');
-    Route::get('shop/product/{id}/edit','Admin\ShopProductController@edit');
-    Route::get('shop/product/{id}/delete','Admin\ShopProductController@delete');
+    Route::get('product', 'Admin\ProductController@index');
+    Route::get('product/create','Admin\ProductController@create');
+    Route::get('product/{id}/edit','Admin\ProductController@edit');
+    Route::get('product/{id}/delete','Admin\ProductController@delete');
 
 
-    Route::post('shop/product','Admin\ShopProductController@store');
-    Route::post('shop/product/{id}','Admin\ShopProductController@update');
-    Route::post('shop/product/{id}/delete','Admin\ShopProductController@destroy');
-
-    Route::get('shop/oder', function (){
-        return view('admin.content.shop.oder.index');
-    });
-
-    Route::get('shop/review', function (){
-        return view('admin.content.shop.review.index');
-    });
-
-    Route::get('shop/customer', function (){
-        return view('admin.content.shop.customer.index');
-    });
-
-    Route::get('shop/brand', function (){
-        return view('admin.content.shop.brand.index');
-    });
-
-    Route::get('shop/statistic', function (){
-        return view('admin.content.shop.statistic.index');
-    });
-
-    Route::get('shop/product/order', function (){
-        return view('admin.content.shop.adminorder.index');
-    });
+    Route::post('product','Admin\ProductController@store');
+    Route::post('product/{id}','Admin\ProductController@update');
+    Route::post('product/{id}/delete','Admin\ProductController@destroy');
 
     /**
-     * -----------Route admin nội dung------------
+     * -----------Route admin  order------------
      * ----------------------------------------
      * ----------------------------------------
      */
 
-    Route::get('content/category','Admin\ContentCategoryController@index');
-    Route::get('content/category/create','Admin\ContentCategoryController@create');
-    Route::get('content/category/{id}/edit','Admin\ContentCategoryController@edit');
-    Route::get('content/category/{id}/delete','Admin\ContentCategoryController@delete');
 
-
-    Route::post('content/category','Admin\ContentCategoryController@store');
-    Route::post('content/category/{id}','Admin\ContentCategoryController@update');
-    Route::post('content/category/{id}/delete','Admin\ContentCategoryController@destroy');
-
-
-    /**
-     * Route cho phần nội dung bài viết
-     */
-
-    Route::get('content/post','Admin\ContentPostController@index');
-    Route::get('content/post/create','Admin\ContentPostController@create');
-    Route::get('content/post/{id}/edit','Admin\ContentPostController@edit');
-    Route::get('content/post/{id}/delete','Admin\ContentPostController@delete');
-
-
-    Route::post('content/post','Admin\ContentPostController@store');
-    Route::post('content/post/{id}','Admin\ContentPostController@update');
-    Route::post('content/post/{id}/delete','Admin\ContentPostController@destroy');
-
-
-//    Route::get('content/category', function (){
-//        return view('admin.content.content.category.index');
-//    });
-//
-//    Route::get('content/category', function (){
-//        return view('admin.content.content.post.index');
-//    });
-//
-//    Route::get('content/page', function (){
-//        return view('admin.content.content.page.index');
-//    });
-//
-//    Route::get('content/tag', function (){
-//        return view('admin.content.content.tag.index');
-//    });
+    Route::get('order', 'Admin\OrderController@index');
+    Route::get('product/{id}/delete','Admin\OrderController@delete');
+    Route::post('product/{id}/delete','Admin\OrderController@destroy');
 
 });
 
